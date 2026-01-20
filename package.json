@@ -1,0 +1,21 @@
+{
+  "name": "personal-diary",
+  "version": "1.0.0",
+  "description": "Personal Diary App",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "author": "You",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "ejs": "^3.1.9",
+    "mongoose": "^8.1.1",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
