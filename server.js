@@ -8,7 +8,7 @@ const Diary = require("./models/diary");
 const app = express();
 
 /* ===============================
-   DATABASE (MongoDB Atlas)
+   DATABASE (NO CREDENTIALS HERE)
 ================================ */
 mongoose
   .connect(process.env.MONGO_URI)
@@ -52,7 +52,6 @@ app.post("/add", async (req, res) => {
    SERVER
 ================================ */
 const PORT = process.env.PORT || 3000;
-
 app.listen(PORT, () => {
   console.log(`🚀 Diary app running on port ${PORT}`);
 });
