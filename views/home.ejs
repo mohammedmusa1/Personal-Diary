@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Diary</title>
+
+  <!-- ✅ CORRECT PATH -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Lenis -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>📔 My Diary</h1>
+  <a href="/add" class="btn">+ New Entry</a>
+</header>
+
+<main>
+  <% if (diaries.length === 0) { %>
+    <p>No diary entries yet.</p>
+  <% } %>
+
+  <% diaries.forEach(d => { %>
+    <div class="card">
+      <h2><%= d.title %></h2>
+      <p class="text"><%= d.content %></p>
+      <button class="read-more">Read more</button>
+    </div>
+  <% }) %>
+</main>
+
+<script>
+  const lenis = new Lenis({ lerp: 0.08 });
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
+  document.querySelectorAll(".card").forEach(card => {
+    const text = card.querySelector(".text");
+    const btn = card.querySelector(".read-more");
+
+    if (text.scrollHeight <= 72) btn.style.display = "none";
+
+    btn.onclick = () => {
+      text.classList.toggle("open");
+      btn.innerText = text.classList.contains("open")
+        ? "Read less"
+        : "Read more";
+    };
+  });
+</script>
+
+</body>
+</html>
